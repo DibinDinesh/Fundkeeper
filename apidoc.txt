@@ -1,0 +1,132 @@
+Attributes: [username, email, password]
+I)api for creating user account
+
+
+    url : http : // 127.0.0. I : 8000/ api/register/
+    method : POST
+    body: {
+        username
+        email
+        password
+    }
+
+===============================================
+
+Schema: Expense
+Attributes:[id,title,amount,category,user_object,priority,created_date]
+
+1) Api for listing all expenses
+
+    url : : http://127.e.e.1:809/api/expenses/
+    method : get
+    body : nil I
+    authorization: {username, password} Basic authentication
+
+
+2) Api for adding a new Expense
+
+    url : : http://127.e.e.1:809/api/expenses/
+
+    method : POST
+
+    body :{title,amount,category,priority}
+
+    authorization: Basic authentication
+
+3) Api for fetching a new Expense
+
+    url : : http://127.e.e.1:809/api/expenses/
+
+    method : get
+
+    body :{title,amount,category,priority}
+
+    authorization: Basic authentication
+
+
+    
+
+=======================================
+schema : Income
+
+attributes:[title,amount,category,created_date]
+
+1) api for listing all Income
+    urls: http://127.e.e.1:809/api/income/
+
+    method:get
+
+    body:nill
+
+    authorization:{username,password} Basic authentication
+
+2) Api for adding Income
+
+    urls: http://127.e.e.1:809/api/income/
+
+    method : POST
+
+    body:{
+        title,amount,category
+    }
+
+    authorization:{username,password}
+
+3) Api for update income
+    urls: http://127.e.e.1:809/api/income/{id}/
+
+    method : PUT
+
+    body :{
+        title,amount,category
+    }
+
+    authorization:{username, password}
+
+4) api for detail
+
+    urls: http://127.e.e.1:809/api/income/{id}/
+
+    method:get
+
+    body :{
+        title,amount,category
+    }
+
+    authorization:{username,password}
+
+5) Api for delete
+
+    urls: http://127.e.e.1:809/api/income/{id}/
+
+    method:DELETE
+
+    body :nill
+
+    authorization:{username,password}
+
+
+modelview set--default router,Only give Serializer and query set . all definition are there
+            without Serializer and query set,it doesn't work
+
+Api view= a view for list and create.seperete view for update and delete
+
+viewsets -= only one view.listcreateretrieveupdatedestroy
+
+
+modelviewset and viewsets can use router object in url.no need seperate url
+
+
+
+                                            rest framework
+                                           ---------------------
+
+uthentication.py
+--------------------
+class BasicAuthentication
+class TokenAuthentication
+class SessionAuthentication                                                             permissions.py
+                                                                                    -----------------------
+                                                                                        class lsAuthenticated
+                                                                                        class IsAdminOnIy
+                                                                                        class lsAuthenticatedOrReadOnly

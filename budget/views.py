@@ -122,28 +122,28 @@ class ExpenseDeleteView(View):
 @method_decorator(signin_required,name="dispatch")
 class ExpenseSummaryView(View):
 
-     def get(self,request,*args,**kwargs):
+    def get(self,request,*args,**kwargs):
 
-          current_month=timezone.now().month
+        current_month=timezone.now().month
 
-          current_year=timezone.now().year
+        current_year=timezone.now().year
 
-          expense_list=Expense.objects.filter(created_date__month=current_month,created_date__year=current_year,user_object=request.user)
+        expense_list=Expense.objects.filter(created_date__month=current_month,created_date__year=current_year,user_object=request.user)
 
-          expense_total=expense_list.values("amount").aggregate(total=Sum("amount"))
+        expense_total=expense_list.values("amount").aggregate(total=Sum("amount"))
 
-          print(expense_total)
+        print(expense_total)
 
-          category_list=expense_list.values("category").annotate(total=Sum("amount"))
+        category_list=expense_list.values("category").annotate(total=Sum("amount"))
 
-          print("cat list: ",category_list)
+        print("cat list: ",category_list)
 
-          priority_list=expense_list.values("priority").annotate(total=Sum("amount"))
+        priority_list=expense_list.values("priority").annotate(total=Sum("amount"))
 
-          print("priority list:" , priority_list)
+        print("priority list:" , priority_list)
 
-          data={
-              
+        data={
+            
             "expense_total":expense_total,
 
             "category_summary":category_list,
@@ -152,7 +152,7 @@ class ExpenseSummaryView(View):
 
         }
 
-          return render(request,"expense_summary.html",data)
+        return render(request,"expense_summary.html",data)
 
 
 class SignUpView(View):
